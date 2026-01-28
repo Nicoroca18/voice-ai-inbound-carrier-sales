@@ -1,13 +1,3 @@
-"""
-main.py - Inbound Carrier Agent API (V15 Dashboard+)
-- Endpoints workflow: /api/authenticate, /api/loads, /api/negotiate, /api/call/result
-- Dashboard mejorado: KPIs nuevas, tabla con Board price, columnas más finas y PIE chart (Total $ vs Accepted $)
-- Refresh silencioso cada 5s
-
-Notas:
-- FMCSA "auto": si hay key intenta real; si falla o no hay key, mock permisivo.
-- Negociación realista: carrier pide MÁS que el board; se acepta si oferta <= techo (board * (1 + MAX_OVER_PCT)).
-"""
 
 import os
 import re
@@ -209,14 +199,7 @@ def get_loads(
 
 @app.post("/api/negotiate", dependencies=[Depends(require_api_key)])
 def negotiate(payload: NegotiateIn):
-    """
-    Lógica realista:
-    - listed = board rate (lo que publicas)
-    - ceiling = listed * (1 + MAX_OVER_PCT)
-    - El carrier pide MÁS que el board; aceptamos si su oferta <= ceiling.
-    - Si oferta > ceiling y aún hay rondas, contra = ceiling.
-    - Máx 3 rondas; si no hay acuerdo, rechazamos.
-    """
+
     key = f"{payload.mc_number}:{payload.load_id}"
 
     loads = load_loads()
