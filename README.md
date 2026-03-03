@@ -138,7 +138,7 @@ The inbound workflow follows a structured decision flow:
    - Accept → finalize
    - Counteroffer → continue (max 3 rounds)
    - Reject after limit → no-deal message
-7. Log call result
+7. Log call result 
 8. End call or transfer (if applicable)
 
 Conditional paths handle:
