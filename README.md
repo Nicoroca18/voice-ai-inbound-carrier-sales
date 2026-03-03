@@ -18,7 +18,7 @@ Built as part of the **HappyRobot technical challenge**.
 - Load search and presentation  
 - Automated multi-round rate negotiation (up to 3 rounds)  
 - Acceptance / rejection handling  
-- Call outcome logging and sentiment classification  
+- Call outcome logging and sentiment classification   
 - Real-time metrics and dashboard visualization   
 - Secure, containerized deployment  
 
